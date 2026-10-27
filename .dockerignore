@@ -1,0 +1,12 @@
+# dependencies & build output
+node_modules
+.next
+src/generated
+
+# runtime data (the SQLite database lives in a named volume)
+data
+
+# vcs & local tooling
+.git
+.env*
+*.log

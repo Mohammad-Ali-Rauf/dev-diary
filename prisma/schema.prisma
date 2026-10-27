@@ -1,0 +1,27 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model Log {
+  id        Int      @id @default(autoincrement())
+  title     String
+  content   String
+  /// The day this entry is for, as an ISO 8601 timestamp.
+  date      DateTime @default(now())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  tags      Tag[]
+
+  @@index([date])
+}
+
+model Tag {
+  id   Int    @id @default(autoincrement())
+  name String @unique
+  logs Log[]
+}
