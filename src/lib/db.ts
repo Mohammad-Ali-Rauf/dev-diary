@@ -1,8 +1,11 @@
-import { PrismaBetterSqlite3 } from "@prisma/adapter-better-sqlite3";
+import { PrismaLibSql } from "@prisma/adapter-libsql";
 import { PrismaClient } from "@/generated/prisma/client";
-import { DATABASE_URL } from "@/lib/database";
+import { DATABASE_AUTH_TOKEN, DATABASE_URL } from "@/lib/database";
 
-const adapter = new PrismaBetterSqlite3({ url: DATABASE_URL });
+const adapter = new PrismaLibSql({
+  url: DATABASE_URL,
+  authToken: DATABASE_AUTH_TOKEN,
+});
 
 const globalForDb = globalThis as unknown as { db?: PrismaClient };
 

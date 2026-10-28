@@ -8,11 +8,13 @@
     "start": "next start",
     "lint": "biome check",
     "format": "biome format --write",
-    "postinstall": "prisma generate"
+    "postinstall": "prisma generate",
+    "vercel-build": "node scripts/migrate.mjs && next build"
   },
   "dependencies": {
     "@base-ui/react": "^1.9.0",
-    "@prisma/adapter-better-sqlite3": "^7.10.1",
+    "@libsql/client": "^0.18.0",
+    "@prisma/adapter-libsql": "^7.10.1",
     "@prisma/client": "^7.10.1",
     "class-variance-authority": "^0.7.1",
     "cn": "^0.5.0",
